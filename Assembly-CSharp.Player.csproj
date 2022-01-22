@@ -53,11 +53,9 @@
     <UnityVersion>2020.3.24f1</UnityVersion>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="Assets\TutorialInfo\Scripts\Readme.cs" />
-    <Compile Include="Assets\Scripts\SimpleCameraController.cs" />
-    <Compile Include="Assets\Scripts\View Model Component\Tile.cs" />
-    <Compile Include="Assets\Scripts\Model\LevelData.cs" />
     <Compile Include="Assets\Scripts\PreProduction\BoardCreator.cs" />
+    <Compile Include="Assets\Scripts\Model\LevelData.cs" />
+    <Compile Include="Assets\Scripts\View Model Component\Tile.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="UnityEngine">

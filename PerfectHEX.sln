@@ -3,8 +3,6 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Assembly-CSharp", "Assembly-CSharp.csproj", "{D052B73D-0A07-77FC-CB26-D3E8CD5B60E7}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Assembly-CSharp-Editor", "Assembly-CSharp-Editor.csproj", "{CC5CFD20-B4EE-13D6-D443-D6A5EDD32763}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Assembly-CSharp", "Assembly-CSharp.Player.csproj", "{6770C596-41C2-99E3-222A-A1CE1E7702DB}"
 EndProject
 Global
@@ -17,10 +15,6 @@ Global
 		{D052B73D-0A07-77FC-CB26-D3E8CD5B60E7}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D052B73D-0A07-77FC-CB26-D3E8CD5B60E7}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D052B73D-0A07-77FC-CB26-D3E8CD5B60E7}.Release|Any CPU.Build.0 = Release|Any CPU
-		{CC5CFD20-B4EE-13D6-D443-D6A5EDD32763}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{CC5CFD20-B4EE-13D6-D443-D6A5EDD32763}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{CC5CFD20-B4EE-13D6-D443-D6A5EDD32763}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{CC5CFD20-B4EE-13D6-D443-D6A5EDD32763}.Release|Any CPU.Build.0 = Release|Any CPU
 		{6770C596-41C2-99E3-222A-A1CE1E7702DB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{6770C596-41C2-99E3-222A-A1CE1E7702DB}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6770C596-41C2-99E3-222A-A1CE1E7702DB}.Release|Any CPU.ActiveCfg = Release|Any CPU
