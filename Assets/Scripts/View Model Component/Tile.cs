@@ -1,18 +1,57 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class Tile : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    public const float stepHeight = 0.25f;
+
+    public Point pos;
+
+    public int height;
+
+    public GameObject content;
+
+    [HideInInspector] public Tile prev;
+    [HideInInspector] public int distance;
+
+    public Vector3 center
     {
-        
+        get
+        {
+            return new Vector3(pos.x, height * stepHeight, pos.y);
+        }
     }
 
-    // Update is called once per frame
-    void Update()
+    private void Match()
     {
-        
+        transform.localPosition = new Vector3(pos.x, height * stepHeight / 2f, pos.y);
+        transform.localScale = new Vector3(1, height * stepHeight, 1);
+    }
+
+    public void SetHeight(int h)
+    {
+        height = h;
+        Match();
+    }
+    public void Grow()
+    {
+        height++;
+        Match();
+    }
+
+    public void Shrink()
+    {
+        height--;
+        Match();
+    }
+
+    public void Load(Point p, int h)
+    {
+        pos = p;
+        height = h;
+        Match();
+    }
+    public void Load(Vector3 v)
+    {
+        Load(new Point((int)v.x, (int)v.z), (int)v.y);
     }
 }

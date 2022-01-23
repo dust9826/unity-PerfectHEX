@@ -2,7 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class LevelData : MonoBehaviour
+public class LevelData : ScriptableObject
 {
-
+    public List<Vector3> tiles;
+    public TilesetData tileset;
+    public List<Vector4> tileDatas;
 }

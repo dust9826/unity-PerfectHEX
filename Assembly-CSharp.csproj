@@ -56,6 +56,9 @@
     <Compile Include="Assets\Scripts\PreProduction\BoardCreator.cs" />
     <Compile Include="Assets\Scripts\Model\LevelData.cs" />
     <Compile Include="Assets\Scripts\View Model Component\Tile.cs" />
+    <Compile Include="Assets\Scripts\Model\TileData.cs" />
+    <Compile Include="Assets\Scripts\Model\TilesetData.cs" />
+    <Compile Include="Assets\Scripts\Model\Point.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="UnityEngine">
