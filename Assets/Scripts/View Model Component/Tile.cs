@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class Tile : MonoBehaviour
 {
-    public const float stepHeight = 0.25f;
+    public const float stepHeight = 1f;
 
     public Point pos;
 
@@ -52,6 +52,6 @@ public class Tile : MonoBehaviour
     }
     public void Load(Vector3 v)
     {
-        Load(new Point((int)v.x, (int)v.z), (int)v.y);
+        Load(new Point((int)v.x, (int)v.y), (int)v.z);
     }
 }

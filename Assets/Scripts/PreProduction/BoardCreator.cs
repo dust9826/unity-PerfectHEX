@@ -16,7 +16,7 @@ public class BoardCreator : MonoBehaviour
 
     [SerializeField] int width = 10;
     [SerializeField] int depth = 10;
-    [SerializeField] int height = 8;
+    [SerializeField] int height = 10;
 
     [SerializeField] Point pos;
     [SerializeField] int curHeight;
@@ -26,11 +26,14 @@ public class BoardCreator : MonoBehaviour
     [SerializeField] int curTileData;
 
     // 타일맵의 실질적인 모습
-    Dictionary<Point, Tile> tiles = new Dictionary<Point, Tile>();
+    int[,,] tiles = new int[10, 10, 10];
     /// <summary>
     /// 타일맵의 그래픽적인 모습을 나타낸다.
     /// </summary>
-    Dictionary<Vector3, TileData> tileDatas = new Dictionary<Vector3, TileData>();
+    List<VisibleTileData> tileDatas = new List<VisibleTileData>();
+    //Dictionary<Vector4, TileData> tileDatas = new Dictionary<Vector4, TileData>();
+
+    #region Property
 
     Transform marker
     {
@@ -46,6 +49,27 @@ public class BoardCreator : MonoBehaviour
     }
     Transform _marker;
 
+    public Point Pos
+    {
+        get { return pos; }
+        set 
+        { 
+            pos = value;
+            UpdateMarker();
+        }
+    }
+    public int Height
+    {
+        get { return curHeight; }
+        set 
+        {
+            curHeight = value;
+            UpdateMarker();
+        }
+    }
+
+    #endregion
+
     public void SetTile()
     {
         TileData tileData = tileSets.tileDatas[curTileData];
@@ -54,10 +78,11 @@ public class BoardCreator : MonoBehaviour
         instance.transform.position = new Vector3(pos.x, curHeight, pos.y);
         instance.transform.position += tileData.pivot;
         instance.transform.position -= new Vector3(0.5f, 0, 0.5f);
-        tileDatas.Add(new Vector3(pos.x, curHeight, pos.y), tileData);
+        //tileDatas.Add(new Vector3(pos.x, curHeight, pos.y), tileData);
+
 
         Rect rect = new Rect(pos.x, pos.y, tileData.size.x, tileData.size.z);
-        SetRect(rect, (int)(tileData.size.y * 4) + curHeight * 4);
+        SetRect(rect, (int)(tileData.size.y) + curHeight);
     }
     
     public void Grow()
@@ -84,8 +109,10 @@ public class BoardCreator : MonoBehaviour
 
     public void UpdateMarker()
     {
-        Tile t = tiles.ContainsKey(pos) ? tiles[pos] : null;
+        //Tile t = tiles.ContainsKey(pos) ? tiles[pos] : null;
+        Tile t = null;
         marker.localPosition = t != null ? t.center : new Vector3(pos.x, 0, pos.y);
+        marker.localPosition = new Vector3(marker.localPosition.x, curHeight, marker.localPosition.z);
     }
 
     public void Clear()
@@ -95,7 +122,7 @@ public class BoardCreator : MonoBehaviour
         tileDatas.Clear();
         for (int i = dataTileArea.childCount - 1; i >= 0; --i)
             DestroyImmediate(dataTileArea.GetChild(i).gameObject);
-        tiles.Clear();
+        //tiles.Clear();
     }
 
     public void Save()
@@ -106,15 +133,17 @@ public class BoardCreator : MonoBehaviour
             CreateSaveDirectory();
 
         LevelData board = ScriptableObject.CreateInstance<LevelData>();
-        board.tiles = new List<Vector3>(tiles.Count);
+        board.tiles = new int[width, depth, height];
 
-        foreach (Tile t in tiles.Values)
-            board.tiles.Add(new Vector3(t.pos.x, t.height, t.pos.y));
+        //foreach (Tile t in tiles.Values)
+        //    board.tiles[t.pos.x, t.height, t.pos.y] = 1;
 
         board.tileset = tileSets;
 
         foreach (var t in tileDatas)
-            board.tileDatas.Add(new Vector4(t.Key.x, t.Key.y, t.Key.z, 1));
+        {
+            //board.tileDatas.Add(new VisibleTileData(t.Key.x, t.Key.y, t.Key.z, 1, 0));
+        }
 
         string fileName = string.Format("Assets/Resources/Levels/{1}.asset", filePath, name);
         AssetDatabase.CreateAsset(board, fileName);
@@ -126,12 +155,17 @@ public class BoardCreator : MonoBehaviour
         if (levelData == null)
             return;
 
-        foreach (Vector3 v in levelData.tiles)
-        {
-            Tile t = Create();
-            t.Load(v);
-            tiles.Add(t.pos, t);
-        }
+        //foreach (Vector3 v in levelData.tiles)
+        //{
+        //    Tile t = Create();
+        //    t.Load(v);
+        //    tiles.Add(t.pos, t);
+        //}
+
+        //foreach (Vector3 v in levelData.tiles)
+        //{
+
+        //}
     }
 
     Rect RandomRect()
@@ -188,13 +222,13 @@ public class BoardCreator : MonoBehaviour
 
     Tile GetOrCreate(Point p)
     {
-        if (tiles.ContainsKey(p))
-            return tiles[p];
+        //if (tiles.ContainsKey(p))
+        //    return tiles[p];
 
         Tile t = Create();
 
         t.Load(p, 0);
-        tiles.Add(p, t);
+        //tiles.Add(p, t);
 
         return t;
     }
@@ -215,15 +249,16 @@ public class BoardCreator : MonoBehaviour
 
     void ShrinkSingle(Point p)
     {
-        if (!tiles.ContainsKey(p))
-            return;
+        //if (!tiles.ContainsKey(p))
+        //    return;
 
-        Tile t = tiles[p];
+        //Tile t = tiles[p];
+        Tile t = null;
         t.Shrink();
 
         if (t.height <= 0)
         {
-            tiles.Remove(p);
+            //tiles.Remove(p);
             DestroyImmediate(t.gameObject);
         }
     }

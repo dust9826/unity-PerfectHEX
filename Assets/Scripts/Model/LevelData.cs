@@ -4,7 +4,22 @@ using UnityEngine;
 
 public class LevelData : ScriptableObject
 {
-    public List<Vector3> tiles;
+    public int[,,] tiles;
+    public int[] tileLayer;
     public TilesetData tileset;
-    public List<Vector4> tileDatas;
+    public List<VisibleTileData> tileDatas;
+}
+
+public class VisibleTileData
+{
+    Point3 pos;
+    int yRotate;
+    int id;
+
+    public VisibleTileData(Point3 _pos, int _yRotate, int _id)
+    {
+        pos = _pos;
+        yRotate = _yRotate;
+        id = _id;
+    }
 }
