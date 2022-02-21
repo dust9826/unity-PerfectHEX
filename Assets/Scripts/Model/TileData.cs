@@ -2,11 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-[System.Serializable]
-[CreateAssetMenu(fileName = "Tile Data", menuName = "Scriptable Object/Tile Data", order = int.MaxValue)]
-public class TileData : ScriptableObject
+/// <summary>
+/// 타일의 크기, 충돌 정보르 저장하는 값
+/// </summary>
+public class TileData : MonoBehaviour
 {
-    public GameObject tilePrefab;
-    public Vector3 pivot;
-    public Vector3 size;
+    public Vector2 size;
+    public List<Point> nonColiders;
 }
