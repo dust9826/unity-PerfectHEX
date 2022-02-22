@@ -41,8 +41,9 @@ public class MoveTargetState : BattleState
         {
             if (!floorTiles.ContainsKey(pos))
                 return;
-            board.RemoveEntity(turn.actor.pos);
-            board.AddEntity(pos);
+            if (turn.actor.pos == pos)
+                return;
+            board.MoveEntity(turn.actor.pos, pos);
 
             owner.ChangeState<MoveSequenceState>();
         }

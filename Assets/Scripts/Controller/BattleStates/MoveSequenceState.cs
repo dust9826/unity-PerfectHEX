@@ -19,6 +19,6 @@ public class MoveSequenceState : BattleState
 
         turn.actor.Place(pos);
 
-        owner.ChangeState<SelectUnitState>();
+        owner.ChangeState<AddUnitState>();
     }
 }

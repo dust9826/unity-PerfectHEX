@@ -20,6 +20,9 @@ public class SelectUnitState : BattleState
         cameraRig.follow = turn.actor.transform;
         SelectTile(turn.actor.pos);
         yield return null;
-        owner.ChangeState<CommandSelectionState>();
+        if (turn.actor.isPlayer)
+            owner.ChangeState<CommandSelectionState>();
+        else
+            owner.ChangeState<EnemySequenceState>();
     }
 }

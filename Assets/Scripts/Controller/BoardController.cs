@@ -94,13 +94,27 @@ public class BoardController : MonoBehaviour
         return player;
     }
 
+    public Entity GetEntity(Point pos)
+    {
+        int idx = tileLayerData[(int)TileLayer.Entity][pos.x, pos.y];
+        return entitiesData[idx - 1];
+    }
+
+    public void MoveEntity(Point origin, Point to)
+    {
+        board[origin.x, origin.y] = TileLayer.Floor;
+        board[to.x, to.y] = TileLayer.Entity;
+
+        tileLayerData[(int)TileLayer.Entity][to.x, to.y] = tileLayerData[(int)TileLayer.Entity][origin.x, origin.y];
+        tileLayerData[(int)TileLayer.Entity][origin.x, origin.y] = 0;
+    }
+
     // 수정 필요
     // board의 값만 수정하고 tileLayerData의 값은 수정하지 않는다.
     // 위에도 적어둠
     public void AddEntity(Point pos)
     {
         board[pos.x, pos.y] = TileLayer.Entity;
-
     }
 
     public void RemoveEntity(Point pos)

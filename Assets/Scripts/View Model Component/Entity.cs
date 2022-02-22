@@ -7,6 +7,8 @@ public class Entity : MonoBehaviour
     public Point pos { get; protected set; }
     public Directions dir;
 
+    public bool isPlayer = false;
+
     public void Awake()
     {
         Vector3 position = transform.position - new Vector3(0.5f, 0, 0.5f);
