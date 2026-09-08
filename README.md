@@ -16,11 +16,6 @@
 - **유닛과 상호작용** — Entity 상속 구조, Movement, Interaction, 문(DoorController).
 - **UI·카메라** — 능력 메뉴 패널, 정보 이벤트, 카메라 리그.
 
-## 링크
-
-- 프로젝트 상세 (Notion): [PerfectHex](https://military-guanaco-a36.notion.site/353a22a554398049be64cf358ed423b7)
-- 포트폴리오: [Notion](https://military-guanaco-a36.notion.site/352a22a5543980f5be50d4660a744e8e) · [PDF](https://drive.google.com/file/d/11B7ugR6RwQhI4dSEP5VHTsIx2B1_gTAP/view)
-
 ## License
 
 Battle Of The Creek by Alexander Nakarada | https://www.serpentsoundstudios.com
