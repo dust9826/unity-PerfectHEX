@@ -4,6 +4,8 @@
 
 > 소스는 `master` 브랜치에 있습니다.
 
+![PerfectHex 플레이 화면](docs/readme-cover.jpg)
+
 - 기술 Unity, C#
 
 ## 시스템
